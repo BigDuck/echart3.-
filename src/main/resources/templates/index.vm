@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Echarts3模块化包引入源码-入门</title>
+    <meta charset="utf-8" content="text/html">
+</head>
+<body>
+<!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;"></div>
+</body>
+<script src="/echarts-master/test/esl.js"></script>
+<script src="/echarts-master/config.js"></script>
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script>
+
+
+    require([
+        'echarts',
+        'echarts/chart/bar',
+        'echarts/component/legend',
+        'echarts/component/tooltip'
+    ], function (echarts) {
+//
+//        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        var option;
+        $.ajax({
+            url: "/echart/data",
+            dataType: "JSON",
+            type: "GET",
+            success: function (data) {
+                var xData = [];
+                var yData=[];
+                $.each(data, function (a, b) {
+                    console.log(b);
+                    xData.push(b.name);
+                    yData.push(b.sale);
+                });
+                console.log(xData);
+                option = {
+                    title: {
+                        text: 'ECharts 入门示例'
+                    },
+                    tooltip: {
+                        show: true,
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: ['销量2']
+                    },
+                    xAxis: {
+                        data: xData
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '销量2',
+                        type: 'bar',
+                        data: yData
+                    }]
+                };
+                myChart.setOption(option);
+
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+        // 指定图表的配置项和数据
+
+
+        // 使用刚指定的配置项和数据显示图表。
+    })
+
+</script>
+</html>
