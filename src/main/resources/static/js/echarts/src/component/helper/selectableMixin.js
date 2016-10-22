@@ -25,7 +25,7 @@ define(function (require) {
             var targetMap = this._selectTargetMap;
             var target = targetMap[name];
             var selectedMode = this.get('selectedMode');
-            if (selectedMode === 'single') {
+            if (selectedMode === 'single.vm') {
                 zrUtil.each(targetMap, function (target) {
                     target.selected = false;
                 });
@@ -39,7 +39,7 @@ define(function (require) {
         unSelect: function (name) {
             var target = this._selectTargetMap[name];
             // var selectedMode = this.get('selectedMode');
-            // selectedMode !== 'single' && target && (target.selected = false);
+            // selectedMode !== 'single.vm' && target && (target.selected = false);
             target && (target.selected = false);
         },
 

@@ -25,9 +25,6 @@
         'echarts/component/toolbox',
         'echarts/chart/pie',
         'echarts/component/title'
-
-
-
     ], function ($, echarts) {
 //
 //        // 基于准备好的dom，初始化echarts实例
@@ -39,7 +36,7 @@
                 case '入学考':
                     console.log('点击入学考')
                     setPie(1,'入学考');break;
-                case '期中考':                    console.log('期中考')
+                case '期中考':   console.log('期中考')
 
                     setPie(2,'期中考');break;
                 case '月考':    console.log('月考')
@@ -89,6 +86,7 @@
                     }]
                 };
                 setPie(1,'入学考');
+                myChart.resize();
                 myChart.setOption(option);
 
             },
@@ -147,6 +145,7 @@
                         ]
                     };
                     chart1.setOption(option,false);
+                    chart1.resize();
                 },
                 error: function (err) {
                     console.log(err);
@@ -154,9 +153,14 @@
             })
 
         }
-
-        window.onresize = myChart.resize();
-        // 使用刚指定的配置项和数据显示图表。
+        window.onresize=function () {
+            console.log("asdd")
+            chart1.resize();
+            myChart.resize();
+        }
+//        window.onresize = chart1.resize;
+//        window.onresize =  chart1.resize;
+//        // 使用刚指定的配置项和数据显示图表。
     });
 
 </script>

@@ -6198,7 +6198,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        progressiveThreshold: 3000,
 	        progressive: 400,
 
-	        // Threshold of if use single hover layer to optimize.
+	        // Threshold of if use single.vm hover layer to optimize.
 	        hoverLayerThreshold: 3000
 	    };
 
@@ -10240,7 +10240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 
 	    /**
-	     * Set state of single element
+	     * Set state of single.vm element
 	     * @param  {module:zrender/Element} el
 	     * @param  {string} state
 	     */
@@ -18928,7 +18928,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        constructor: Painter,
 
 	        /**
-	         * If painter use a single canvas
+	         * If painter use a single.vm canvas
 	         * @return {boolean}
 	         */
 	        isSingleCanvas: function () {
@@ -20594,7 +20594,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return modelUtil.converDataValue(
 	                (value instanceof Array)
 	                    ? value[dimIndex]
-	                    // If value is a single number or something else not array.
+	                    // If value is a single.vm number or something else not array.
 	                    : value,
 	                dimensionInfoMap[dimName]
 	            );
@@ -21278,7 +21278,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    /**
-	     * Get layout of single data item
+	     * Get layout of single.vm data item
 	     * @param {number} idx
 	     */
 	    listProto.getItemLayout = function (idx) {
@@ -21286,7 +21286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    /**
-	     * Set layout of single data item
+	     * Set layout of single.vm data item
 	     * @param {number} idx
 	     * @param {Object} layout
 	     * @param {boolean=} [merge=false]
@@ -21298,14 +21298,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    /**
-	     * Clear all layout of single data item
+	     * Clear all layout of single.vm data item
 	     */
 	    listProto.clearItemLayouts = function () {
 	        this._itemLayouts.length = 0;
 	    };
 
 	    /**
-	     * Get visual property of single data item
+	     * Get visual property of single.vm data item
 	     * @param {number} idx
 	     * @param {string} key
 	     * @param {boolean} ignoreParent
@@ -21321,7 +21321,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 
 	    /**
-	     * Set visual property of single data item
+	     * Set visual property of single.vm data item
 	     *
 	     * @param {number} idx
 	     * @param {string|Object} key
@@ -28485,7 +28485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var targetMap = this._selectTargetMap;
 	            var target = targetMap[name];
 	            var selectedMode = this.get('selectedMode');
-	            if (selectedMode === 'single') {
+	            if (selectedMode === 'single.vm') {
 	                zrUtil.each(targetMap, function (target) {
 	                    target.selected = false;
 	                });
@@ -28499,7 +28499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        unSelect: function (name) {
 	            var target = this._selectTargetMap[name];
 	            // var selectedMode = this.get('selectedMode');
-	            // selectedMode !== 'single' && target && (target.selected = false);
+	            // selectedMode !== 'single.vm' && target && (target.selected = false);
 	            target && (target.selected = false);
 	        },
 
@@ -31965,7 +31965,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 
 	        /**
-	         * Convert a single (lon, lat) data item to (x, y) point.
+	         * Convert a single.vm (lon, lat) data item to (x, y) point.
 	         * @param {Array.<number>} data
 	         * @return {Array.<number>}
 	         */
@@ -40899,7 +40899,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 
 	        /**
-	         * Convert a dim value of a single item of series data to Point.
+	         * Convert a dim value of a single.vm item of series data to Point.
 	         * @param {*} value
 	         * @param {string} dim
 	         * @return {Array}
@@ -41600,7 +41600,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            fill: 'rgba(0,0,0,0.1)'
 	        },
 	        transformable: true,
-	        brushMode: 'single',
+	        brushMode: 'single.vm',
 	        removeOnClick: false
 	    };
 
@@ -42307,7 +42307,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (shouldShowCover(controller) || creatingCover) {
 
 	            if (panel && !creatingCover) {
-	                thisBrushOption.brushMode === 'single' && clearCovers(controller);
+	                thisBrushOption.brushMode === 'single.vm' && clearCovers(controller);
 	                var brushOption = zrUtil.clone(thisBrushOption);
 	                brushOption.panelId = panel === true ? null : panel.__brushPanelId;
 	                creatingCover = controller._creatingCover = createCover(controller, brushOption);
@@ -42334,11 +42334,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        else if (
 	            isEnd
-	            && thisBrushOption.brushMode === 'single'
+	            && thisBrushOption.brushMode === 'single.vm'
 	            && thisBrushOption.removeOnClick
 	        ) {
-	            // Help user to remove covers easily, only by a tiny drag, in 'single' mode.
-	            // But a single click do not clear covers, because user may have casual
+	            // Help user to remove covers easily, only by a tiny drag, in 'single.vm' mode.
+	            // But a single.vm click do not clear covers, because user may have casual
 	            // clicks (for example, click on other component and do not expect covers
 	            // disappear).
 	            // Only some cover removed, trigger action, but not every click trigger action.
@@ -46751,8 +46751,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            var legendData = this._data;
 
-	            // If selectedMode is single, try to select one
-	            if (legendData[0] && this.get('selectedMode') === 'single') {
+	            // If selectedMode is single.vm, try to select one
+	            if (legendData[0] && this.get('selectedMode') === 'single.vm') {
 	                var hasSelected = false;
 	                // If has any selected in option.selected
 	                for (var i = 0; i < legendData.length; i++) {
@@ -46764,7 +46764,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        break;
 	                    }
 	                }
-	                // Try select the first if selectedMode is single
+	                // Try select the first if selectedMode is single.vm
 	                !hasSelected && this.select(legendData[0].get('name'));
 	            }
 	        },
@@ -46810,7 +46810,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        select: function (name) {
 	            var selected = this.option.selected;
 	            var selectedMode = this.get('selectedMode');
-	            if (selectedMode === 'single') {
+	            if (selectedMode === 'single.vm') {
 	                var data = this._data;
 	                zrUtil.each(data, function (dataItem) {
 	                    selected[dataItem.get('name')] = false;
@@ -46823,7 +46823,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * @param {string} name
 	         */
 	        unSelect: function (name) {
-	            if (this.get('selectedMode') !== 'single') {
+	            if (this.get('selectedMode') !== 'single.vm') {
 	                this.option.selected[name] = false;
 	            }
 	        },
@@ -47900,7 +47900,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    var baseAxis;
 	                    var key;
 
-	                    // Only cartesian2d, polar and single support axis trigger
+	                    // Only cartesian2d, polar and single.vm support axis trigger
 	                    if (coordSys.type === 'cartesian2d') {
 	                        // FIXME `axisPointer.axis` is not baseAxis
 	                        baseAxis = coordSys.getBaseAxis();
@@ -47955,14 +47955,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var dataModel = el.dataModel || ecModel.getSeriesByIndex(el.seriesIndex);
 	                var dataIndex = el.dataIndex;
 	                var itemModel = dataModel.getData().getItemModel(dataIndex);
-	                // Series or single data may use item trigger when global is axis trigger
+	                // Series or single.vm data may use item trigger when global is axis trigger
 	                if ((itemModel.get('tooltip.trigger') || globalTrigger) === 'axis') {
 	                    this._showAxisTooltip(tooltipModel, ecModel, e);
 	                }
 	                else {
 	                    // Reset ticket
 	                    this._ticket = '';
-	                    // If either single data or series use item trigger
+	                    // If either single.vm data or series use item trigger
 	                    this._hideAxisPointer();
 	                    // Reset last hover and dispatch downplay action
 	                    this._resetLastHover();
@@ -49285,7 +49285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 
 	        /**
-	         * Convert a single data item to (x, y) point.
+	         * Convert a single.vm data item to (x, y) point.
 	         * Parameter data is an array which the first element is radius and the second is angle
 	         * @param {Array.<number>} data
 	         * @param {boolean} [clamp=false]
@@ -50233,7 +50233,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var echarts = __webpack_require__(1);
 
 	    echarts.extendComponentView({
-	        type: 'single'
+	        type: 'single.vm'
 	    });
 
 
@@ -50250,11 +50250,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var Single = __webpack_require__(299);
 
 	    /**
-	     * Create single coordinate system and inject it into seriesModel.
+	     * Create single.vm coordinate system and inject it into seriesModel.
 	     *
 	     * @param {module:echarts/model/Global} ecModel
 	     * @param {module:echarts/ExtensionAPI} api
-	     * @return {Array.<module:echarts/coord/single/Single>}
+	     * @return {Array.<module:echarts/coord/single.vm/Single>}
 	     */
 	    function create(ecModel, api) {
 	        var singles = [];
@@ -50283,7 +50283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return singles;
 	    }
 
-	    __webpack_require__(26).register('single', {
+	    __webpack_require__(26).register('single.vm', {
 	        create: create,
 	        dimensions: Single.prototype.dimensions
 	    });
@@ -50303,9 +50303,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var layout = __webpack_require__(21);
 
 	    /**
-	     * Create a single coordinates system.
+	     * Create a single.vm coordinates system.
 	     *
-	     * @param {module:echarts/coord/single/AxisModel} axisModel
+	     * @param {module:echarts/coord/single.vm/AxisModel} axisModel
 	     * @param {module:echarts/model/Global} ecModel
 	     * @param {module:echarts/ExtensionAPI} api
 	     */
@@ -50352,9 +50352,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        constructor: Single,
 
 	        /**
-	         * Initialize single coordinate system.
+	         * Initialize single.vm coordinate system.
 	         *
-	         * @param  {module:echarts/coord/single/AxisModel} axisModel
+	         * @param  {module:echarts/coord/single.vm/AxisModel} axisModel
 	         * @param  {module:echarts/model/Global} ecModel
 	         * @param  {module:echarts/ExtensionAPI} api
 	         * @private
@@ -50410,9 +50410,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 
 	        /**
-	         * Resize the single coordinate system.
+	         * Resize the single.vm coordinate system.
 	         *
-	         * @param  {module:echarts/coord/single/AxisModel} axisModel
+	         * @param  {module:echarts/coord/single.vm/AxisModel} axisModel
 	         * @param  {module:echarts/ExtensionAPI} api
 	         */
 	        resize: function (axisModel, api) {
@@ -50567,7 +50567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var axisHelper = __webpack_require__(114);
 
 	    /**
-	     * @constructor  module:echarts/coord/single/SingleAxis
+	     * @constructor  module:echarts/coord/single.vm/SingleAxis
 	     * @extends {module:echarts/coord/Axis}
 	     * @param {string} dim
 	     * @param {*} scale
@@ -50663,14 +50663,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        /**
 	         * Convert the local coord(processed by dataToCoord())
 	         * to global coord(concrete pixel coord).
-	         * designated by module:echarts/coord/single/Single.
+	         * designated by module:echarts/coord/single.vm/Single.
 	         * @type {Function}
 	         */
 	        toGlobalCoord: null,
 
 	        /**
 	         * Convert the global coord to local coord.
-	         * designated by module:echarts/coord/single/Single.
+	         * designated by module:echarts/coord/single.vm/Single.
 	         * @type {Function}
 	         */
 	        toLocalCoord: null
@@ -50925,7 +50925,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    zrUtil.merge(AxisModel.prototype, __webpack_require__(129));
 
-	    axisModelCreator('single', AxisModel, getAxisType, defaultOption);
+	    axisModelCreator('single.vm', AxisModel, getAxisType, defaultOption);
 
 	    module.exports = AxisModel;
 
@@ -52065,7 +52065,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            yAxisIndex: null,
 
 	            brushType: 'rect',      // Default brushType, see BrushController.
-	            brushMode: 'single',    // Default brushMode, 'single' or 'multiple'
+	            brushMode: 'single.vm',    // Default brushMode, 'single.vm' or 'multiple'
 	            transformable: true,    // Default transformable.
 	            brushStyle: {           // Default brushStyle
 	                borderWidth: 1,
@@ -52403,7 +52403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        ecModel.eachComponent({mainType: 'brush'}, function (brushModel) {
 	            brushType = brushModel.brushType;
-	            brushMode = brushModel.brushOption.brushMode || 'single';
+	            brushMode = brushModel.brushOption.brushMode || 'single.vm';
 	            isBrushed |= brushModel.areas.length;
 	        });
 	        this._brushType = brushType;
@@ -52456,7 +52456,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        ? brushType
 	                        : (brushType === type ? false : type),
 	                    brushMode: type === 'keep'
-	                        ? (brushMode === 'multiple' ? 'single' : 'multiple')
+	                        ? (brushMode === 'multiple' ? 'single.vm' : 'multiple')
 	                        : brushMode
 	                }
 	            });
@@ -53369,7 +53369,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var asc = numberUtil.asc;
 
 	    /**
-	     * Operate single axis.
+	     * Operate single.vm axis.
 	     * One axis can only operated by one axis operator.
 	     * Different dataZoomModels may be defined to operate the same axis.
 	     * (i.e. 'inside' data zoom and 'slider' data zoom components)
@@ -53567,7 +53567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // with NaN data, NaN will be filtered and stack will be wrong.
 	            // So we need to force the mode to be set empty.
 	            // In fect, it is not a big deal that do not support filterMode-'filter'
-	            // when using toolbox#dataZoom, utill tooltip#dataZoom support "single axis
+	            // when using toolbox#dataZoom, utill tooltip#dataZoom support "single.vm axis
 	            // selection" some day, which might need "adapt to data extent on the
 	            // otherAxis", which is disabled by filterMode-'empty'.
 	            var otherAxisModel = this.getOtherAxisModel();
@@ -55868,8 +55868,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        /**
 	         * @example
-	         * this.formatValueText(someVal); // format single numeric value to text.
-	         * this.formatValueText(someVal, true); // format single category value to text.
+	         * this.formatValueText(someVal); // format single.vm numeric value to text.
+	         * this.formatValueText(someVal, true); // format single.vm category value to text.
 	         * this.formatValueText([min, max]); // format numeric min-max to text.
 	         * this.formatValueText([this.dataBound[0], max]); // using data lower bound.
 	         * this.formatValueText([min, this.dataBound[1]]); // using data upper bound.
@@ -55923,7 +55923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    return textValue[0] + ' - ' + textValue[1];
 	                }
 	            }
-	            else { // Format single value (includes category case).
+	            else { // Format single.vm value (includes category case).
 	                return textValue;
 	            }
 
@@ -57041,7 +57041,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                [HOVER_LINK_OUT, 0],
 	                [0, mathMin(halfHoverLinkSize, mathMax(extentMax - pos, 0))]
 	            ]
-	            : [ // indicate single value
+	            : [ // indicate single.vm value
 	                [0, 0], [5, -5], [5, 5]
 	            ];
 	    }
@@ -57388,7 +57388,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                        // If set to 0 and component type not set, component type will be
 	                                        // determined as "continuous". (It is less reasonable but for ec2
 	                                        // compatibility, see echarts/component/visualMap/typeDefaulter)
-	            selectedMode: 'multiple',   // Can be 'multiple' or 'single'.
+	            selectedMode: 'multiple',   // Can be 'multiple' or 'single.vm'.
 	            itemGap: 10,                // The gap between two items, in px.
 	            hoverLink: true             // Enable hover highlight.
 	        },
@@ -57457,7 +57457,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	            }, this);
 
-	            if (thisOption.selectedMode === 'single') {
+	            if (thisOption.selectedMode === 'single.vm') {
 	                // Ensure there is only one selected.
 	                var hasSel = false;
 
@@ -57983,7 +57983,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var selected = zrUtil.clone(option.selected);
 	            var newKey = visualMapModel.getSelectedMapKey(piece);
 
-	            if (option.selectedMode === 'single') {
+	            if (option.selectedMode === 'single.vm') {
 	                selected[newKey] = true;
 	                zrUtil.each(selected, function (o, key) {
 	                    selected[key] = key === newKey;

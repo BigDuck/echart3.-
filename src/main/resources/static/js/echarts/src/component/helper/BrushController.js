@@ -47,7 +47,7 @@ define(function (require) {
             fill: 'rgba(0,0,0,0.1)'
         },
         transformable: true,
-        brushMode: 'single',
+        brushMode: 'single.vm',
         removeOnClick: false
     };
 
@@ -754,7 +754,7 @@ define(function (require) {
         if (shouldShowCover(controller) || creatingCover) {
 
             if (panel && !creatingCover) {
-                thisBrushOption.brushMode === 'single' && clearCovers(controller);
+                thisBrushOption.brushMode === 'single.vm' && clearCovers(controller);
                 var brushOption = zrUtil.clone(thisBrushOption);
                 brushOption.panelId = panel === true ? null : panel.__brushPanelId;
                 creatingCover = controller._creatingCover = createCover(controller, brushOption);
@@ -781,11 +781,11 @@ define(function (require) {
         }
         else if (
             isEnd
-            && thisBrushOption.brushMode === 'single'
+            && thisBrushOption.brushMode === 'single.vm'
             && thisBrushOption.removeOnClick
         ) {
-            // Help user to remove covers easily, only by a tiny drag, in 'single' mode.
-            // But a single click do not clear covers, because user may have casual
+            // Help user to remove covers easily, only by a tiny drag, in 'single.vm' mode.
+            // But a single.vm click do not clear covers, because user may have casual
             // clicks (for example, click on other component and do not expect covers
             // disappear).
             // Only some cover removed, trigger action, but not every click trigger action.

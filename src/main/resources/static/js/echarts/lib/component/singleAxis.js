@@ -1,12 +1,12 @@
 
 
-    require('../coord/single/singleCreator');
+    require('../coord/single.vm/singleCreator');
     require('./axis/SingleAxisView');
-    require('../coord/single/AxisModel');
+    require('../coord/single.vm/AxisModel');
 
     var echarts = require('../echarts');
 
     echarts.extendComponentView({
-        type: 'single'
+        type: 'single.vm'
     });
 

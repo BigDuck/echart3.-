@@ -279,7 +279,7 @@ define(function(require) {
         },
 
         /**
-         * Convert a dim value of a single item of series data to Point.
+         * Convert a dim value of a single.vm item of series data to Point.
          * @param {*} value
          * @param {string} dim
          * @return {Array}

@@ -5,7 +5,7 @@ define(function (require) {
     var axisHelper = require('../axisHelper');
 
     /**
-     * @constructor  module:echarts/coord/single/SingleAxis
+     * @constructor  module:echarts/coord/single.vm/SingleAxis
      * @extends {module:echarts/coord/Axis}
      * @param {string} dim
      * @param {*} scale
@@ -101,14 +101,14 @@ define(function (require) {
         /**
          * Convert the local coord(processed by dataToCoord())
          * to global coord(concrete pixel coord).
-         * designated by module:echarts/coord/single/Single.
+         * designated by module:echarts/coord/single.vm/Single.
          * @type {Function}
          */
         toGlobalCoord: null,
 
         /**
          * Convert the global coord to local coord.
-         * designated by module:echarts/coord/single/Single.
+         * designated by module:echarts/coord/single.vm/Single.
          * @type {Function}
          */
         toLocalCoord: null

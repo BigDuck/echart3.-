@@ -96,7 +96,7 @@ define(function (require) {
         };
 
     /**
-     * Set state of single element
+     * Set state of single.vm element
      * @param  {module:zrender/Element} el
      * @param  {string} state
      */

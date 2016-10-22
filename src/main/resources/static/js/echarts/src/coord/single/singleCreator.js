@@ -6,11 +6,11 @@ define(function (require) {
     var Single = require('./Single');
 
     /**
-     * Create single coordinate system and inject it into seriesModel.
+     * Create single.vm coordinate system and inject it into seriesModel.
      *
      * @param {module:echarts/model/Global} ecModel
      * @param {module:echarts/ExtensionAPI} api
-     * @return {Array.<module:echarts/coord/single/Single>}
+     * @return {Array.<module:echarts/coord/single.vm/Single>}
      */
     function create(ecModel, api) {
         var singles = [];
@@ -39,7 +39,7 @@ define(function (require) {
         return singles;
     }
 
-    require('../../CoordinateSystem').register('single', {
+    require('../../CoordinateSystem').register('single.vm', {
         create: create,
         dimensions: Single.prototype.dimensions
     });

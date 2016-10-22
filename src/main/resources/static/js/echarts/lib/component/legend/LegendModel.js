@@ -30,8 +30,8 @@
 
             var legendData = this._data;
 
-            // If selectedMode is single, try to select one
-            if (legendData[0] && this.get('selectedMode') === 'single') {
+            // If selectedMode is single.vm, try to select one
+            if (legendData[0] && this.get('selectedMode') === 'single.vm') {
                 var hasSelected = false;
                 // If has any selected in option.selected
                 for (var i = 0; i < legendData.length; i++) {
@@ -43,7 +43,7 @@
                         break;
                     }
                 }
-                // Try select the first if selectedMode is single
+                // Try select the first if selectedMode is single.vm
                 !hasSelected && this.select(legendData[0].get('name'));
             }
         },
@@ -89,7 +89,7 @@
         select: function (name) {
             var selected = this.option.selected;
             var selectedMode = this.get('selectedMode');
-            if (selectedMode === 'single') {
+            if (selectedMode === 'single.vm') {
                 var data = this._data;
                 zrUtil.each(data, function (dataItem) {
                     selected[dataItem.get('name')] = false;
@@ -102,7 +102,7 @@
          * @param {string} name
          */
         unSelect: function (name) {
-            if (this.get('selectedMode') !== 'single') {
+            if (this.get('selectedMode') !== 'single.vm') {
                 this.option.selected[name] = false;
             }
         },

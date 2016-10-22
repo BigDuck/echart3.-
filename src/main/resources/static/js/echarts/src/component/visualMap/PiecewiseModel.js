@@ -53,7 +53,7 @@ define(function(require) {
                                         // If set to 0 and component type not set, component type will be
                                         // determined as "continuous". (It is less reasonable but for ec2
                                         // compatibility, see echarts/component/visualMap/typeDefaulter)
-            selectedMode: 'multiple',   // Can be 'multiple' or 'single'.
+            selectedMode: 'multiple',   // Can be 'multiple' or 'single.vm'.
             itemGap: 10,                // The gap between two items, in px.
             hoverLink: true             // Enable hover highlight.
         },
@@ -122,7 +122,7 @@ define(function(require) {
                 }
             }, this);
 
-            if (thisOption.selectedMode === 'single') {
+            if (thisOption.selectedMode === 'single.vm') {
                 // Ensure there is only one selected.
                 var hasSel = false;
 

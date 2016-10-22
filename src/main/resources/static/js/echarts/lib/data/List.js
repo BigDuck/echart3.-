@@ -264,7 +264,7 @@
             return modelUtil.converDataValue(
                 (value instanceof Array)
                     ? value[dimIndex]
-                    // If value is a single number or something else not array.
+                    // If value is a single.vm number or something else not array.
                     : value,
                 dimensionInfoMap[dimName]
             );
@@ -948,7 +948,7 @@
     };
 
     /**
-     * Get layout of single data item
+     * Get layout of single.vm data item
      * @param {number} idx
      */
     listProto.getItemLayout = function (idx) {
@@ -956,7 +956,7 @@
     };
 
     /**
-     * Set layout of single data item
+     * Set layout of single.vm data item
      * @param {number} idx
      * @param {Object} layout
      * @param {boolean=} [merge=false]
@@ -968,14 +968,14 @@
     };
 
     /**
-     * Clear all layout of single data item
+     * Clear all layout of single.vm data item
      */
     listProto.clearItemLayouts = function () {
         this._itemLayouts.length = 0;
     };
 
     /**
-     * Get visual property of single data item
+     * Get visual property of single.vm data item
      * @param {number} idx
      * @param {string} key
      * @param {boolean} ignoreParent
@@ -991,7 +991,7 @@
     };
 
     /**
-     * Set visual property of single data item
+     * Set visual property of single.vm data item
      *
      * @param {number} idx
      * @param {string|Object} key

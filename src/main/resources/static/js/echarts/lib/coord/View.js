@@ -230,7 +230,7 @@
         },
 
         /**
-         * Convert a single (lon, lat) data item to (x, y) point.
+         * Convert a single.vm (lon, lat) data item to (x, y) point.
          * @param {Array.<number>} data
          * @return {Array.<number>}
          */

@@ -62,42 +62,62 @@ public class BarController {
         return "index";
     }
 
+    @RequestMapping("/bar2")
+    public String bar2() {
+        return "bar";
+    }
+    @RequestMapping("/animate")
+    public String animation(){
+        return "animation";
+    }
     @RequestMapping("/data")
     @ResponseBody
     public Object data() {
         System.out.println("------");
         System.out.println(p);
-        List<Exam> res=new ArrayList<>();
-        for (Exam e:p){
-            res.add(new Exam(e.getName(),e.getSale()));
+        List<Exam> res = new ArrayList<>();
+        for (Exam e : p) {
+            res.add(new Exam(e.getName(), e.getSale()));
         }
         return res;
 
     }
 
+    @RequestMapping("/allData")
+    @ResponseBody
+    public Object allData() {
+
+        return p;
+    }
+
+    @RequestMapping("/toall")
+    public String toAll() {
+        return "all";
+    }
+
     @RequestMapping("/pie")
     @ResponseBody
     public Object getPie(@RequestParam("type") Integer type) {
-        Map<String,Integer> result = null;
+        Map<String, Integer> result = null;
         if (type instanceof Integer) {
             switch (type) {
                 case 1:
-                    result=  p.get(0).getDetail();
+                    result = p.get(0).getDetail();
                     break;
                 case 2:
-                    result=      p.get(1).getDetail();
+                    result = p.get(1).getDetail();
 
                     break;
                 case 3:
-                    result=    p.get(2).getDetail();
+                    result = p.get(2).getDetail();
 
                     break;
                 case 4:
-                    result=    p.get(3).getDetail();
+                    result = p.get(3).getDetail();
 
                     break;
                 case 5:
-                    result=   p.get(4).getDetail();
+                    result = p.get(4).getDetail();
                     break;
 
             }

@@ -805,7 +805,7 @@
                 [HOVER_LINK_OUT, 0],
                 [0, mathMin(halfHoverLinkSize, mathMax(extentMax - pos, 0))]
             ]
-            : [ // indicate single value
+            : [ // indicate single.vm value
                 [0, 0], [5, -5], [5, 5]
             ];
     }

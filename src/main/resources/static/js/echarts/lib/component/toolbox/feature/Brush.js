@@ -54,7 +54,7 @@
 
         ecModel.eachComponent({mainType: 'brush'}, function (brushModel) {
             brushType = brushModel.brushType;
-            brushMode = brushModel.brushOption.brushMode || 'single';
+            brushMode = brushModel.brushOption.brushMode || 'single.vm';
             isBrushed |= brushModel.areas.length;
         });
         this._brushType = brushType;
@@ -107,7 +107,7 @@
                         ? brushType
                         : (brushType === type ? false : type),
                     brushMode: type === 'keep'
-                        ? (brushMode === 'multiple' ? 'single' : 'multiple')
+                        ? (brushMode === 'multiple' ? 'single.vm' : 'multiple')
                         : brushMode
                 }
             });

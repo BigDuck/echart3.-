@@ -194,7 +194,7 @@ define(function(require) {
             var selected = zrUtil.clone(option.selected);
             var newKey = visualMapModel.getSelectedMapKey(piece);
 
-            if (option.selectedMode === 'single') {
+            if (option.selectedMode === 'single.vm') {
                 selected[newKey] = true;
                 zrUtil.each(selected, function (o, key) {
                     selected[key] = key === newKey;

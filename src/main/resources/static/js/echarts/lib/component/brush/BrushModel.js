@@ -31,7 +31,7 @@
             yAxisIndex: null,
 
             brushType: 'rect',      // Default brushType, see BrushController.
-            brushMode: 'single',    // Default brushMode, 'single' or 'multiple'
+            brushMode: 'single.vm',    // Default brushMode, 'single.vm' or 'multiple'
             transformable: true,    // Default transformable.
             brushStyle: {           // Default brushStyle
                 borderWidth: 1,

@@ -162,7 +162,7 @@
         },
 
         /**
-         * Used by single coordinate
+         * Used by single.vm coordinate
          *
          * @param {string} axisDim  the dimension for singel coordinate
          * @return {Array.<string> } specified dimensions on the axis.
@@ -215,7 +215,7 @@
          *
          * @param {Array.<string>} dim  singel coordinate dimension
          * @param {Array.<number>} value  coordinate value
-         * @param {module:echarts/coord/single/SingleAxis} baseAxis  single Axis used
+         * @param {module:echarts/coord/single.vm/SingleAxis} baseAxis  single.vm Axis used
          *     the themeRiver.
          * @return {Array.<number>}
          */

@@ -8,9 +8,9 @@
     var layout = require('../../util/layout');
 
     /**
-     * Create a single coordinates system.
+     * Create a single.vm coordinates system.
      *
-     * @param {module:echarts/coord/single/AxisModel} axisModel
+     * @param {module:echarts/coord/single.vm/AxisModel} axisModel
      * @param {module:echarts/model/Global} ecModel
      * @param {module:echarts/ExtensionAPI} api
      */
@@ -57,9 +57,9 @@
         constructor: Single,
 
         /**
-         * Initialize single coordinate system.
+         * Initialize single.vm coordinate system.
          *
-         * @param  {module:echarts/coord/single/AxisModel} axisModel
+         * @param  {module:echarts/coord/single.vm/AxisModel} axisModel
          * @param  {module:echarts/model/Global} ecModel
          * @param  {module:echarts/ExtensionAPI} api
          * @private
@@ -115,9 +115,9 @@
         },
 
         /**
-         * Resize the single coordinate system.
+         * Resize the single.vm coordinate system.
          *
-         * @param  {module:echarts/coord/single/AxisModel} axisModel
+         * @param  {module:echarts/coord/single.vm/AxisModel} axisModel
          * @param  {module:echarts/ExtensionAPI} api
          */
         resize: function (axisModel, api) {

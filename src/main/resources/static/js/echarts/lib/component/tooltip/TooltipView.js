@@ -393,7 +393,7 @@
                     var baseAxis;
                     var key;
 
-                    // Only cartesian2d, polar and single support axis trigger
+                    // Only cartesian2d, polar and single.vm support axis trigger
                     if (coordSys.type === 'cartesian2d') {
                         // FIXME `axisPointer.axis` is not baseAxis
                         baseAxis = coordSys.getBaseAxis();
@@ -448,14 +448,14 @@
                 var dataModel = el.dataModel || ecModel.getSeriesByIndex(el.seriesIndex);
                 var dataIndex = el.dataIndex;
                 var itemModel = dataModel.getData().getItemModel(dataIndex);
-                // Series or single data may use item trigger when global is axis trigger
+                // Series or single.vm data may use item trigger when global is axis trigger
                 if ((itemModel.get('tooltip.trigger') || globalTrigger) === 'axis') {
                     this._showAxisTooltip(tooltipModel, ecModel, e);
                 }
                 else {
                     // Reset ticket
                     this._ticket = '';
-                    // If either single data or series use item trigger
+                    // If either single.vm data or series use item trigger
                     this._hideAxisPointer();
                     // Reset last hover and dispatch downplay action
                     this._resetLastHover();

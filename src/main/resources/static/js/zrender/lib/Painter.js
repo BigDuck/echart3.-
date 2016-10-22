@@ -217,7 +217,7 @@
         constructor: Painter,
 
         /**
-         * If painter use a single canvas
+         * If painter use a single.vm canvas
          * @return {boolean}
          */
         isSingleCanvas: function () {

@@ -148,7 +148,7 @@
         },
 
         /**
-         * Convert a single data item to (x, y) point.
+         * Convert a single.vm data item to (x, y) point.
          * Parameter data is an array which the first element is radius and the second is angle
          * @param {Array.<number>} data
          * @param {boolean} [clamp=false]

@@ -71,7 +71,7 @@ define(function (require) {
 
     zrUtil.merge(AxisModel.prototype, require('../axisModelCommonMixin'));
 
-    axisModelCreator('single', AxisModel, getAxisType, defaultOption);
+    axisModelCreator('single.vm', AxisModel, getAxisType, defaultOption);
 
     return AxisModel;
 });
