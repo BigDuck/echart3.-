@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Echarts3模块化包引入源码-入门</title>
+    <meta charset="utf-8" content="text/html">
+</head>
+<body>
+<!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+<div id="main" style="height:400px;"></div>
+<div id="chart1" style="width: 500px;height:400px"></div>
+</body>
+
+<script src="/js/require.js"></script>
+<script src="/js/main.js"></script>
+<script>
+
+    require([
+        'jquery',
+        'echarts',
+        'echarts/chart/bar',
+        'echarts/chart/line',
+        'echarts/chart/pie',
+        'echarts/component/legend',
+        'echarts/component/tooltip',
+        'echarts/component/toolbox',
+        'echarts/chart/pie',
+        'echarts/component/title'
+
+
+
+    ], function ($, echarts) {
+//
+//        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        var option;
+
+        $.ajax({
+            url: "/echart/data",
+            dataType: "JSON",
+            type: "GET",
+            success: function (data) {
+                console.log(data);
+                var xData = [];
+                var yData = [];
+                $.each(data, function (a, b) {
+                    xData.push(b.name);
+                    yData.push(b.sale);
+                });
+                option = {
+                    title: {
+                        text: '考试人数'
+                    },
+                    tooltip: {
+                        show: true,
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: ['参考人数']
+                    },
+                    xAxis: {
+                        data: xData
+                    },
+                    yAxis: {
+                        min: 10,
+                        max: 100
+                    },
+                    series: [{
+                        name: '参考人数',
+                        type: 'bar',
+                        data: yData
+                    }]
+                };
+                myChart.setOption(option);
+
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        window.onresize = function () {
+          console.log("改变")
+            myChart.resize();
+            console.log("--")
+
+        };
+
+    });
+
+</script>
+</html>
