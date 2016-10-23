@@ -1,0 +1,15 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<h2>导入</h2>
+<form name=""  action="/excel/import" enctype="multipart/form-data" method="post">
+    <label class="k-field-label">文件导入:</label>
+    <input class="form-control k-field-file" type="file" id="file" name="excelFile" />
+    <input  class="xxx" type="submit">导入</input>
+</form>
+
+</body>
+</html>

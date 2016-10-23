@@ -100,8 +100,8 @@
                 var le = [];
                 console.log(pieData);
 
-                    $.each(pieData[0],function (index,value) {
-                        le.push(value.name);
+                $.each(pieData[0], function (index, value) {
+                    le.push(value.name);
                 });
                 var optionPie = {
                     title: {
@@ -137,15 +137,15 @@
                 chart1.setOption(optionPie, true);
                 myChart.on("click", function (params) {
                     console.log(params.name);
-                        for(var i=0;i<xData.length;i++) {
-                            console.log(xData[i]);
-                            if (xData[i] == params.name) {
-                                console.log("相等");
-                                optionPie.series[0].data = pieData[i];
-                                optionPie.title.text = xData[i]+"成绩分布";
-                            }
+                    for (var i = 0; i < xData.length; i++) {
+                        console.log(xData[i]);
+                        if (xData[i] == params.name) {
+                            console.log("相等");
+                            optionPie.series[0].data = pieData[i];
+                            optionPie.title.text = xData[i] + "成绩分布";
                         }
-                //    myChart.setOption(option, true);
+                    }
+                    //    myChart.setOption(option, true);
                     chart1.setOption(optionPie, true);
                 });
 
