@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jstree</title>
+    <link href="/js/jstree/themes/default/style.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="ibox-content">
+    <div id="using_json"></div>
+</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="/js/jstree/jstree.min.js"></script>
+<script>
+    $(function () {
+        $("#using_json").jstree({
+            "core": {
+                "data": {
+                    "url": "/data.json",
+                    "dataType": "json" // needed only if you do not supply JSON headers
+                }
+            },
+            "checkbox": {"keep_selected_style": false},
+            "plugins": ["wholerow", "checkbox"]
+        })
+    });
+</script>
+</html>

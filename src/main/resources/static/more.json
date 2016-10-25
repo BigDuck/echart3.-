@@ -1,0 +1,20 @@
+[
+
+      {
+        "id": 44,
+        "text": "Child node 1",
+        "children":[{
+          "id": 666,
+          "text": "老板",
+          "type": "file"
+        },
+          {
+            "id": 66,
+            "text": "懂事",
+            "type": "file"
+          }
+        ]
+      }
+
+
+]
