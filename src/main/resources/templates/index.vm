@@ -1,167 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Echarts3模块化包引入源码-入门</title>
-    <meta charset="utf-8" content="text/html">
+    <title>Echarts3</title>
+    <meta charset="utf-8" content="text/html">    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 </head>
+<style >
+    html body{
+        width:100%;
+
+    }
+</style>
 <body>
-<!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
-<div id="main" style="width: 500px;height:400px;"></div>
-<div id="chart1" style="width: 500px;height:400px"></div>
+<div class="container" style="padding-right: 30px;">
+    <div class="row" style="overflow-y:auto; overflow-x:auto;">
+        <div id="main" class="col-md-6 col-lg-6" style="height:500px;"></div>
+        <div id="chart1" class="col-md-6 col-lg-6" style="height:500px"></div>
+    </div>
+</div>
+
 </body>
 
-<script src="/js/require.js"></script>
-<script src="/js/main.js"></script>
-<script>
+<script src="/require.js"></script>
+<script src="/main.js"></script>
+<script src="/work/index.js">
 
-    require([
-        'jquery',
-        'echarts',
-        'echarts/chart/bar',
-        'echarts/chart/line',
-        'echarts/chart/pie',
-        'echarts/component/legend',
-        'echarts/component/tooltip',
-        'echarts/component/toolbox',
-        'echarts/chart/pie',
-        'echarts/component/title'
-    ], function ($, echarts) {
-//
-//        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
-        var chart1 = echarts.init(document.getElementById("chart1"));
-        var option;
-        myChart.on("click", function (params) {
-            switch (params.name){
-                case '入学考':
-                    console.log('点击入学考')
-                    setPie(1,'入学考');break;
-                case '期中考':   console.log('期中考')
-
-                    setPie(2,'期中考');break;
-                case '月考':    console.log('月考')
-                    setPie(3,'月考');break;
-                case '期末考':console.log('期末考')
-                    setPie(4,'期末考'),'期末考';break;
-                case '结业考':
-                    setPie(5,'结业考');break;
-
-            }
-        });
-
-        $.ajax({
-            url: "/echart/data",
-            dataType: "JSON",
-            type: "GET",
-            success: function (data) {
-                console.log(data);
-                var xData = [];
-                var yData = [];
-                $.each(data, function (a, b) {
-                    xData.push(b.name);
-                    yData.push(b.sale);
-                });
-                option = {
-                    title: {
-                        text: '考试人数'
-                    },
-                    tooltip: {
-                        show: true,
-                        trigger: 'axis'
-                    },
-                    legend: {
-                        data: ['参考人数']
-                    },
-                    xAxis: {
-                        data: xData
-                    },
-                    yAxis: {
-                        min: 10,
-                        max: 100
-                    },
-                    series: [{
-                        name: '参考人数',
-                        type: 'bar',
-                        data: yData
-                    }]
-                };
-                setPie(1,'入学考');
-                myChart.resize();
-                myChart.setOption(option);
-
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        })
-        // 指定图表的配置项和数据
-        //兔儿
-        function setPie(type,titleName) {
-            $.ajax({
-                url: "/echart/pie",
-                dataType: "JSON",
-                data: {type: type},
-                type: "GET",
-                success: function (data) {
-                    console.log(data);
-                    var xData = [];
-                    var yData = [];
-                    $.each(data, function (a, b) {
-                        console.log(a);
-                        console.log(b);
-                        xData.push({value: b, name: a});
-
-                    });
-                    console.log(xData);
-                    var option = {
-                        title: {
-                            text: titleName+'成绩分布',
-                            x: 'center'
-                        },
-                        tooltip: {
-                            trigger: 'item',
-                            formatter: "{a} <br/>{b} : {c} ({d}%)"
-                        },
-                        legend: {
-                            orient: 'vertical',
-                            left: 'left',
-                            data: ['优秀', '良好', '及格', '不及格']
-                        },
-                        series: [
-                            {
-                                name: '成绩等级',
-                                type: 'pie',
-                                radius: '55%',
-                                center: ['50%', '60%'],
-                                data: xData,
-                                itemStyle: {
-                                    emphasis: {
-                                        shadowBlur: 10,
-                                        shadowOffsetX: 0,
-                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                    }
-                                }
-                            }
-                        ]
-                    };
-                    chart1.setOption(option,false);
-                    chart1.resize();
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            })
-
-        }
-        window.onresize=function () {
-            console.log("asdd")
-            chart1.resize();
-            myChart.resize();
-        }
-//        window.onresize = chart1.resize;
-//        window.onresize =  chart1.resize;
-//        // 使用刚指定的配置项和数据显示图表。
-    });
 
 </script>
 </html>

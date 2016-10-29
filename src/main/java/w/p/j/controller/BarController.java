@@ -30,31 +30,31 @@ public class BarController {
         detail.put("良好", 25);
         detail.put("及格", 5);
         detail.put("不及格", 3);
-        p.add(new Exam("入学考", 43, detail));
+        p.add(new Exam("RXK","入学考", 43, detail));
         detail = new HashMap<>();
         detail.put("优秀", 10);
         detail.put("良好", 5);
         detail.put("及格", 5);
         detail.put("不及格", 10);
-        p.add(new Exam("期中考", 30, detail));
+        p.add(new Exam("QZK","期中考", 30, detail));
         detail = new HashMap<>();
         detail.put("优秀", 9);
         detail.put("良好", 6);
         detail.put("及格", 5);
         detail.put("不及格", 20);
-        p.add(new Exam("月考", 40, detail));
+        p.add(new Exam("YK","月考", 40, detail));
         detail = new HashMap<>();
         detail.put("优秀", 10);
         detail.put("良好", 15);
         detail.put("及格", 4);
         detail.put("不及格", 1);
-        p.add(new Exam("期末考", 35, detail));
+        p.add(new Exam("QMK","期末考", 35, detail));
         detail = new HashMap<>();
         detail.put("优秀", 10);
         detail.put("良好", 10);
         detail.put("及格", 10);
         detail.put("不及格", 15);
-        p.add(new Exam("结业考", 45, detail));
+        p.add(new Exam("JYK","结业考", 45, detail));
     }
 
     @RequestMapping("/bar")
@@ -66,10 +66,12 @@ public class BarController {
     public String bar2() {
         return "bar";
     }
+
     @RequestMapping("/animate")
-    public String animation(){
+    public String animation() {
         return "animation";
     }
+
     @RequestMapping("/data")
     @ResponseBody
     public Object data() {
@@ -77,7 +79,7 @@ public class BarController {
         System.out.println(p);
         List<Exam> res = new ArrayList<>();
         for (Exam e : p) {
-            res.add(new Exam(e.getName(), e.getSale()));
+            res.add(new Exam(e.getId(),e.getName(), e.getSale()));
         }
         return res;
 
@@ -97,31 +99,38 @@ public class BarController {
 
     @RequestMapping("/pie")
     @ResponseBody
-    public Object getPie(@RequestParam("type") Integer type) {
+    public Object getPie(@RequestParam("type") String type) {
         Map<String, Integer> result = null;
-        if (type instanceof Integer) {
-            switch (type) {
-                case 1:
-                    result = p.get(0).getDetail();
-                    break;
-                case 2:
-                    result = p.get(1).getDetail();
-
-                    break;
-                case 3:
-                    result = p.get(2).getDetail();
-
-                    break;
-                case 4:
-                    result = p.get(3).getDetail();
-
-                    break;
-                case 5:
-                    result = p.get(4).getDetail();
-                    break;
-
+        for (Exam ex : p) {
+            if (ex.getName().equals(type)) {
+                result = ex.getDetail();
+                break;
             }
+
         }
+//        if (type instanceof Integer) {
+//            switch (type) {
+//                case 1:
+//                    result = p.get(0).getDetail();
+//                    break;
+//                case 2:
+//                    result = p.get(1).getDetail();
+//
+//                    break;
+//                case 3:
+//                    result = p.get(2).getDetail();
+//
+//                    break;
+//                case 4:
+//                    result = p.get(3).getDetail();
+//
+//                    break;
+//                case 5:
+//                    result = p.get(4).getDetail();
+//                    break;
+//
+//            }
+//        }
         return result;
     }
 }

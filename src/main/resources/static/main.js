@@ -5,10 +5,9 @@
 require.config({
     baseUrl:"/js",
     paths: {
-      "jquery":"jquery",
-
+      "jquery":"/js/jquery",
+        "vue":"/js/vue/vue"
     },
-        // ,
     packages: [
         {
             name: 'zrender',
@@ -19,11 +18,6 @@ require.config({
             name: 'echarts',
             location: 'echarts/src',
             main: 'echarts'
-        },
-        {
-            name:'jquery',
-            location:'/js',
-            main:"jquery"
         }
     ]
 });

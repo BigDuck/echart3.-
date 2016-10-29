@@ -3,19 +3,32 @@
 <head>
     <title>Echarts3模块化包引入源码-入门</title>
     <meta charset="utf-8" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="/js/animate.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
+<style>
+
+</style>
 <body>
 <!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
 <div>
     <h2>Echarts</h2>
 </div>
-<div id="main" class="animated  bounce" style="height:400px;"></div>
-<div id="chart1" style="height:400px;"></div>
+
+<!--价格padding-right 是为了在手机端可以在右边进行滚动，否则echart 的图像会直接覆盖住滚动条
+ 导致无法进行滚动
+ -->
+<div class="container" style="padding-right: 40px;">
+    <div class="row" style="overflow-y:auto; overflow-x:auto;">
+        <div id="main" class="col-md-6 col-lg-6" style="height: 400px;"></div>
+        <div id="chart1" class="col-md-6 col-lg-6" style="height: 400px;"></div>
+    </div>
+</div>
 </body>
 
-<script src="/js/require.js"></script>
-<script src="/js/main.js"></script>
+<script src="/require.js"></script>
+<script src="/main.js"></script>
 <script>
 
     require([

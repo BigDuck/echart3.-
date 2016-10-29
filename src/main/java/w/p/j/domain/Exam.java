@@ -12,12 +12,21 @@ import java.util.Map;
  **/
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)//自动忽略空字段 之后做接口
 public class Exam {
+    private String id;
     private String name;
     private int sale;
     private Map<String,Integer> detail;
-    public Exam(String name, int sale) {
+    public Exam(String id,String name, int sale) {
         this.name = name;
-        this.sale = sale;
+        this.sale = sale; this.id=id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setDetail(Map detail) {
@@ -28,10 +37,11 @@ public class Exam {
         return detail;
     }
 
-    public Exam(String name, int sale, Map<String, Integer> detail) {
+    public Exam(String id,String name, int sale, Map<String, Integer> detail) {
         this.name = name;
         this.sale = sale;
         this.detail = detail;
+        this.id=id;
     }
 
     public String getName() {
