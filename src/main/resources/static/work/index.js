@@ -24,8 +24,11 @@ require([
     var xData = [];
     var option;
     myChart.on("click", function (params) {
-        setPie(params.name);
-        console.log("params", xData.indexOf(params.name));
+        console.log(params);
+        if(params.componentType=="series"){
+            setPie(params.name);
+            console.log("params", xData.indexOf(params.name));
+        }
 
     });
 
@@ -80,32 +83,36 @@ require([
                         name: '参考人数',
                         type: 'bar',
                         data: yData,
-                        markPoint: {
-                            data: [
-                                {type: 'max', name: '最大值'},
-                                {type: 'min', name: '最小值'}
-                            ]
-                        },
                         markLine: {
+                            lineStyle:{
+                                normal:{
+                                    color:"red"
+                                    // color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    //     offset: 0, color: 'red' // 0% 处的颜色
+                                    // }, {
+                                    //     offset: 1, color: 'blue' // 100% 处的颜色
+                                    // }], false)
+                                }
+                            },
                             data: [
                                 {type: 'average', name: '平均参考人数'},
-                                [{
-                                    symbol: 'none',
-                                    x: '90%',
-                                    yAxis: 'max'
-                                },
-                                    {
-                                        symbol: 'circle',
-                                        label: {
-                                            normal: {
-                                                position: 'middle',
-                                                formatter: '最高参考人数'
-                                            }
-                                        },
-                                        type: 'max',
-                                        name: '最高'
-                                    }]
-                            ]
+                                // 最高点和最低点连线
+                                // [
+                                //     {
+                                //         // 起点和终点的项会共用一个 name
+                                //         name: '最小值到最大值',
+                                //         type: 'min'
+                                //     },
+                                //     {
+                                //         type: 'max'
+                                //     }
+                                // ]
+                                ]
+                        },
+                        label: {
+                            normal: {
+                                show: true,
+                            }
                         }
                     }
                 ]

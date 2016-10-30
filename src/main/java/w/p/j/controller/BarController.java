@@ -4,12 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import w.p.j.domain.BaseLog;
 import w.p.j.domain.Exam;
+import w.p.j.log.impl.AbstractBaseLogger;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Name：BarController
@@ -19,7 +18,7 @@ import java.util.Map;
  **/
 @Controller
 @RequestMapping("/echart")
-public class BarController {
+public class BarController extends AbstractBaseLogger {
 
     private static final ArrayList<Exam> p;
 
@@ -75,7 +74,7 @@ public class BarController {
     @RequestMapping("/data")
     @ResponseBody
     public Object data() {
-        System.out.println("------");
+        saveLog(new BaseLog(BaseLog.ACTION.LOGIN,new Date(),"吴培基"));
         System.out.println(p);
         List<Exam> res = new ArrayList<>();
         for (Exam e : p) {
@@ -88,18 +87,23 @@ public class BarController {
     @RequestMapping("/allData")
     @ResponseBody
     public Object allData() {
+        saveLog(new BaseLog(BaseLog.ACTION.GETDATA,new Date(),"吴培基"));
 
         return p;
     }
 
     @RequestMapping("/toall")
     public String toAll() {
+        saveLog(new BaseLog(BaseLog.ACTION.DELETEDATA,new Date(),"吴培基"));
+
         return "all";
     }
 
     @RequestMapping("/pie")
     @ResponseBody
     public Object getPie(@RequestParam("type") String type) {
+        saveLog(new BaseLog(BaseLog.ACTION.PUSHDATA,new Date(),"吴培基"));
+
         Map<String, Integer> result = null;
         for (Exam ex : p) {
             if (ex.getName().equals(type)) {
