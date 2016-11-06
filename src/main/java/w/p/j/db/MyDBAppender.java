@@ -1,11 +1,11 @@
 package w.p.j.db;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
-import ch.qos.logback.core.db.DBAppenderBase;
+import ch.qos.logback.core.UnsynchronizedAppenderBase;
+import w.p.j.util.JdbcUtils;
 
-import java.lang.reflect.Method;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Name：MyDBAppender
@@ -14,28 +14,38 @@ import java.sql.PreparedStatement;
  * description：自定义
  **/
 
-public class MyDBAppender extends DBAppenderBase<ILoggingEvent> {
-    protected String insertPropertiesSQL;
-    protected String insertExceptionSQL;
-    protected String insertSQL;
+public class MyDBAppender extends UnsynchronizedAppenderBase<ILoggingEvent> {
 
     @Override
-    protected Method getGeneratedKeysMethod() {
-        return null;
-    }
+    protected void append(ILoggingEvent eventObject) {
+        try {
 
-    @Override
-    protected String getInsertSQL() {
-        return "insert";
-    }
+            String content = eventObject.getFormattedMessage();
 
-    @Override
-    protected void subAppend(ILoggingEvent eventObject, Connection connection, PreparedStatement statement) throws Throwable {
+            System.out.println("content内容是: " + content);
 
-    }
+            Map<String, String> map = new HashMap<String, String>();
 
-    @Override
-    protected void secondarySubAppend(ILoggingEvent eventObject, Connection connection, long eventId) throws Throwable {
+            map.put("LOG_LEVEL", eventObject.getLevel().levelStr);
 
+            map.put("CONTENT", content.replace("'", "''"));
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+            map.put("CREATE_DATE", sdf.format(new Date()));
+
+            // 拼接SQL语句，然后执行
+            String sql="insert into log (name ,age) values (?,?)";
+            List<Object> params=new ArrayList();
+            params.add(eventObject.getLevel().levelStr+":"+eventObject.getMessage());
+            params.add(12);
+            Thread.sleep(10000);
+            JdbcUtils.updateByPreparedStatement(sql,params);
+
+        } catch (Throwable sqle) {
+
+            System.out.println(sqle);
+
+        }
     }
 }

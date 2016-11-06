@@ -87,15 +87,15 @@ public class BarController extends AbstractBaseLogger {
     @RequestMapping("/allData")
     @ResponseBody
     public Object allData() {
-        saveLog(new BaseLog(BaseLog.ACTION.GETDATA,new Date(),"吴培基"));
+        saveLog(new BaseLog(BaseLog.ACTION.GETDATA,new Date(),"wupj"));
 
         return p;
     }
 
     @RequestMapping("/toall")
     public String toAll() {
-        saveLog(new BaseLog(BaseLog.ACTION.DELETEDATA,new Date(),"吴培基"));
-
+        saveLog(new BaseLog(BaseLog.ACTION.DELETEDATA,new Date(),"wupj"));
+        addToDBLog(new BaseLog(BaseLog.ACTION.DELETEDATA,new Date(),"wupj"));
         return "all";
     }
 

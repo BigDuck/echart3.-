@@ -32,6 +32,21 @@
 		</dataSource>
 	</connectionSource>
 </appender>
+	<appender name="dbLog" class="w.p.j.db.MyDBAppender">
+		<!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+			<!--<level>INFO</level>-->
+		<!--</filter>-->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+	<appender name="asyncLog" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold>0</discardingThreshold>
+		<queueSize>10000</queueSize>
+		<appender-ref ref="dbLog"/>
+	</appender>
 	<!-- 时间滚动输出 level为 ACTION 日志 -->
 <appender name="action"
 			  class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -60,6 +75,9 @@
 <logger name="action" additivity="false">
 		<appender-ref ref="action"/>
 	</logger>
+	<logger name="asyncLog" additivity="false" level="INFO">
+		<appender-ref ref="asyncLog"/>
+	</logger>
 	<!--<logger name="org.mybatis.spring" level="DEBUG" />-->
 <!--<logger name="org.apache.ibatis" level="DEBUG" />-->
 <!--<logger name="java.sql.Connection" level="DEBUG" />-->
@@ -67,7 +85,7 @@
 <!--<logger name="java.sql.PreparedStatement" level="DEBUG" />-->
 <!--<logger name="java.sql.ResultSet" level="DEBUG" />-->
 
-<root level="INFO">
+<root level="ERROR">
 	<appender-ref ref="stdout"  />
 	<appender-ref ref="file"/>
 	<appender-ref ref="DB"/>

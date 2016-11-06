@@ -7,4 +7,6 @@ import w.p.j.domain.BaseLog;
  */
 public interface BaseLoggerDao<T extends BaseLog> {
     void saveLog(T t);
+
+    void addToDBLog(T t);
 }
