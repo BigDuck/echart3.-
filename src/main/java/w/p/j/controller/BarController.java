@@ -87,22 +87,22 @@ public class BarController extends AbstractBaseLogger {
     @RequestMapping("/allData")
     @ResponseBody
     public Object allData() {
-        saveLog(new BaseLog(BaseLog.ACTION.GETDATA,new Date(),"wupj"));
+        saveLog(new BaseLog(BaseLog.ACTION.GET_DATA, new Date(), "wupj"));
 
         return p;
     }
 
     @RequestMapping("/toall")
     public String toAll() {
-        saveLog(new BaseLog(BaseLog.ACTION.DELETEDATA,new Date(),"wupj"));
-        addToDBLog(new BaseLog(BaseLog.ACTION.DELETEDATA,new Date(),"wupj"));
+        saveLog(new BaseLog(BaseLog.ACTION.DELETE_DATA, new Date(), "wupj"));
+        addToDBLog(new BaseLog(BaseLog.ACTION.DELETE_DATA, new Date(), "wupj"));
         return "all";
     }
 
     @RequestMapping("/pie")
     @ResponseBody
     public Object getPie(@RequestParam("type") String type) {
-        saveLog(new BaseLog(BaseLog.ACTION.PUSHDATA,new Date(),"吴培基"));
+        saveLog(new BaseLog(BaseLog.ACTION.PUSH_DATA, new Date(), "吴培基"));
 
         Map<String, Integer> result = null;
         for (Exam ex : p) {

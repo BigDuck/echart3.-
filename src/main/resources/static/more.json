@@ -1,6 +1,5 @@
-
-
-  "success": [{
+[
+  {
         "id": 44,
         "text": "Child node 1",
         "children":[{

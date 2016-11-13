@@ -11,11 +11,14 @@
 <body>
 <div id="jstree_demo"></div>
 <div id="jstree_demo1"></div>
+<div id="jstree_demo3"></div>
+
+<br/>-------------------<br/>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="/js/jstree/jstree.min.js"></script>
 <script>
-        $('#jstree_demo').jstree({
+    $('#jstree_demo').jstree({
             "core" : {
                 "animation" : 0,
                 "check_callback" : true,
@@ -105,5 +108,41 @@
  }).bind("before_open.jstree",function (node) {
         console.log(node);
     });
+    $("#jstree_demo3").jstree({
+        "core": {
+            "animation": 0,
+            "check_callback": true,
+            "themes": {"stripes": true},
+            'data': {
+                "url": function () {
+                    return "/once.json";
+                }
+            }
+
+        },
+        "types": {
+            "#": {
+                "max_children": 1,
+                "max_depth": 4,
+                "valid_children": ["root"]
+            },
+            "root": {
+                "icon": "/img/tree_icon.png",
+                "valid_children": ["default"]
+            },
+            "default": {
+                "valid_children": ["default", "file"]
+            },
+            "file": {
+                "icon": "glyphicon glyphicon-file",
+                "valid_children": []
+            }
+        },
+        "plugins": [
+            "contextmenu", "dnd", "search",
+            "state", "types", "wholerow"
+        ]
+    });
+
 </script>
 </html>

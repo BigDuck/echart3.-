@@ -38,6 +38,12 @@ public class BaseLog {
         this.action = action;
     }
 
+    public BaseLog(ACTION action, String name) {
+        this.date = new Date();
+        this.name = name;
+        this.action = action;
+
+    }
     public Date getDate() {
         return date;
     }
@@ -67,7 +73,12 @@ public class BaseLog {
     }
 
     public enum ACTION {
-        LOGIN("登录", 1), LOGOUT("登出", 2), GETDATA("获取数据", 3), DELETEDATA("删除数据", 4), PUSHDATA("更新数据", 5);
+        LOGIN("登录", 1),
+        LOGOUT("登出", 2),
+        GET_DATA("获取数据", 3),
+        DELETE_DATA("删除数据", 4),
+        PUSH_DATA("更新数据", 5),
+        VIEW_PAGE("訪問頁面", 6);
         // 成员变量
         private String name;
         private int index;

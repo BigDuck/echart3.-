@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstraptable/dist/bootstrap-table.min.css">
+
+</head>
+
+<body>
+<div class="container">
+    <div class="row col-md-12">
+        <div class="col-md-5 offset1">
+            <table id="table">
+            </table>
+        </div>
+        <div class="col-md-5">
+            <table id="table2">
+            </table>
+        </div>
+    </div>
+    <div class="row col-md-12">
+        <div class="col-md-5 offset1">
+            <table id="table3">
+            </table>
+        </div>
+        <div class="col-md-5">
+            <table id="table4">
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/jquery.js"></script>
+<script src="/bootstraptable/dist/bootstrap-table.min.js"></script>
+<script src="/bootstraptable/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/work/table-data.js"></script>
+</body>
+
+</html>

@@ -13,8 +13,8 @@ import w.p.j.log.BaseLoggerDao;
  **/
 
 public abstract class AbstractBaseLogger implements BaseLoggerDao<BaseLog> {
-    protected  Logger actionLogger = LoggerFactory.getLogger("action");
-    protected Logger dbLogger=LoggerFactory.getLogger("asyncLog");
+    private Logger actionLogger = LoggerFactory.getLogger("action");
+    private Logger dbLogger = LoggerFactory.getLogger("asyncLog");
     @Override
     public void saveLog(BaseLog baseLog) {
         actionLogger.info(baseLog.toString());
