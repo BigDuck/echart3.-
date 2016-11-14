@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import w.p.j.domain.BaseLog;
 import w.p.j.log.BaseLoggerDao;
+import w.p.j.util.FastJsonUtil;
 
 /**
  * Name：BaseLoggerDaoImpl
@@ -22,6 +23,8 @@ public abstract class AbstractBaseLogger implements BaseLoggerDao<BaseLog> {
 
     @Override
     public void addToDBLog(BaseLog baseLog) {
-        dbLogger.info(baseLog.toString());
+        String json = FastJsonUtil.object2Json(baseLog);
+        System.out.println(json);
+        dbLogger.info(json);
     }
 }
