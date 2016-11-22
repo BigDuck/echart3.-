@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import w.p.j.domain.Choice;
 import w.p.j.util.ExcelImportUtil;
@@ -25,19 +26,20 @@ import java.util.List;
 public class ExcelController {
 
     @RequestMapping("/index")
-    public String toImport(){
-     return "excel"   ;
+    public String toImport() {
+        return "excel";
     }
-    @RequestMapping(headers=("content-type=multipart/*"),value = "/import",method = RequestMethod.POST)
+
+    @RequestMapping(headers = ("content-type=multipart/*"), value = "/import", method = RequestMethod.POST)
     public String importExcel(@RequestParam(value = "excelFile") MultipartFile excelFile, HttpServletRequest request) throws IOException {
         if (null == excelFile) {
             System.out.println("空");
-           return null;
+            return null;
         }
         String path = "F:\\demo";
         //容错处理
         File dir = new File(path);
-        if(!dir.exists()) {
+        if (!dir.exists()) {
             dir.mkdirs();
         }
 
@@ -47,6 +49,16 @@ public class ExcelController {
         List<Choice> data = ExcelImportUtil.parseExcel(fis);
 
         System.out.println(data.toString());
+        return "success";
+    }
+
+    @RequestMapping("/headerPhoto")
+    @ResponseBody
+    public String headerPhoto(MultipartFile file) throws IOException {
+        String name = file.getOriginalFilename();
+        System.out.println(name);
+        File file1 = new File("F:/" + name);
+        file.transferTo(file1);
         return "success";
     }
 }

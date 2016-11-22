@@ -5,11 +5,41 @@
 </head>
 <body>
 <h2>导入</h2>
-<form name=""  action="/excel/import" enctype="multipart/form-data" method="post">
+<form name="" action="/excel/import" enctype="multipart/form-data" method="post">
     <label class="k-field-label">文件导入:</label>
-    <input class="form-control k-field-file" type="file" id="file" name="excelFile" />
-    <input  class="xxx" type="submit">导入</input>
+    <input class="form-control k-field-file" type="file" id="file" name="excelFile"/>
+    <input class="xxx" type="submit">导入</input>
 </form>
-
+<form name="photo" action="/excel/headerPhoto" enctype="multipart/form-data" method="post">
+    <label class="k-field-label">上传:</label>
+    <input class="form-control k-field-file" type="file" id="file" name="file"/>
+    <input class="xxx" type="submit">导入</input>
+</form>
+<form id="header" method="post">
+    <label class="k-field-label">上传:</label>
+    <input class="form-control k-field-file" type="file" id="file" name="file"/>
+    <input class="xxx" type="button" onclick="sub()">导入</input>
+</form>
 </body>
+<script src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+    function sub() {
+        var data = new FormData($("#header")[0]);
+        $.ajax({
+            url: "/excel/headerPhoto",
+            type: 'POST',
+            data: data,
+            dataType: 'JSON',
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>
 </html>

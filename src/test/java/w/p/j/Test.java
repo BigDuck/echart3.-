@@ -57,8 +57,7 @@ public class Test {
             te.put(type.get(i), new ArrayList<>());
             tempList.add(te);
         }
-        List<Object> login = new ArrayList<>();
-        List<Object> logout = new ArrayList<>();
+
 //        for (int i = 0; i < showTypeList.size(); i++) {
 //            for (int j = 0; j < list.size(); j++) {
 //                if(showTypeList.get(i).equals(list.get(j).get("showType"))){
@@ -114,8 +113,10 @@ public class Test {
 //                }
 //            }
 //        }
-        System.out.println(getArr(showTypeList, list, "LOGIN").toString());
-        System.out.println(getArr(showTypeList, list, "LOGOUT").toString());
+        for (String typeItem : type) {
+            System.out.println(getArr(showTypeList, list, typeItem).toString());
+        }
+
 
 
 //        for (int i=0;i<showTypeList.size();i++){ //2016
