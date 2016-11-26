@@ -1,12 +1,14 @@
 package w.p.j.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import w.p.j.domain.ACTION;
 import w.p.j.domain.BaseLog;
 import w.p.j.domain.Exam;
-import w.p.j.log.impl.AbstractBaseLogger;
+import w.p.j.log.BaseLoggerDao;
 
 import java.util.*;
 
@@ -18,8 +20,9 @@ import java.util.*;
  **/
 @Controller
 @RequestMapping("/echart")
-public class BarController extends AbstractBaseLogger {
-
+public class BarController {
+    @Autowired
+    BaseLoggerDao baseLoggerDao;
     private static final ArrayList<Exam> p;
 
     static {
@@ -74,7 +77,7 @@ public class BarController extends AbstractBaseLogger {
     @RequestMapping("/data")
     @ResponseBody
     public Object data() {
-        saveLog(new BaseLog(BaseLog.ACTION.LOGIN,new Date(),"吴培基"));
+        baseLoggerDao.saveLog(new BaseLog(ACTION.LOGIN, new Date(), "吴培基"));
         System.out.println(p);
         List<Exam> res = new ArrayList<>();
         for (Exam e : p) {
@@ -87,22 +90,22 @@ public class BarController extends AbstractBaseLogger {
     @RequestMapping("/allData")
     @ResponseBody
     public Object allData() {
-        saveLog(new BaseLog(BaseLog.ACTION.GET_DATA, new Date(), "wupj"));
+        baseLoggerDao.saveLog(new BaseLog(ACTION.GET_DATA, new Date(), "wupj"));
 
         return p;
     }
 
     @RequestMapping("/toall")
     public String toAll() {
-        saveLog(new BaseLog(BaseLog.ACTION.DELETE_DATA, new Date(), "wupj"));
-        addToDBLog(new BaseLog(BaseLog.ACTION.DELETE_DATA, new Date(), "wupj"));
+        baseLoggerDao.saveLog(new BaseLog(ACTION.DELETE_DATA, new Date(), "wupj"));
+        baseLoggerDao.addToDBLog(new BaseLog(ACTION.DELETE_DATA, new Date(), "wupj"));
         return "all";
     }
 
     @RequestMapping("/pie")
     @ResponseBody
     public Object getPie(@RequestParam("type") String type) {
-        saveLog(new BaseLog(BaseLog.ACTION.PUSH_DATA, new Date(), "吴培基"));
+        baseLoggerDao.saveLog(new BaseLog(ACTION.PUSH_DATA, new Date(), "吴培基"));
 
         Map<String, Integer> result = null;
         for (Exam ex : p) {

@@ -41,12 +41,12 @@ public class MyDBAppender extends UnsynchronizedAppenderBase<ILoggingEvent> {
             baseLog = FastJsonUtil.json2Object(content, BaseLog.class);
 
             // 拼接SQL语句，然后执行
-            String sql = "insert into BaseLog (date,name,action) values (?,?,?)";
+            String sql = "insert into BaseLog (date,name,action,description) values (?,?,?,?)";
             List<Object> params = new ArrayList();
             params.add(new Date());
             params.add(baseLog.getName());
-            System.out.println(baseLog.getAction());
             params.add(baseLog.getActionCode());
+            params.add(baseLog.getDesc());
             JdbcUtils.updateByPreparedStatement(sql, params);
         } catch (Exception e) {
             e.printStackTrace();

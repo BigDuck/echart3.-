@@ -4,8 +4,6 @@ import com.alibaba.fastjson.annotation.JSONField;
 import w.p.j.util.FastJsonUtil;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Name：BaseLog
@@ -27,12 +25,30 @@ public class BaseLog {
     /**
      * 动作
      */
+    private String ip;
+    private String desc;
     private ACTION action;
     private Integer actionCode;
     public BaseLog(ACTION action, Date date, String name) {
         this.date = date;
         this.name = name;
         this.action = action;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public BaseLog(ACTION action, String name) {
@@ -42,12 +58,13 @@ public class BaseLog {
 
     }
 
-    public BaseLog() {
-    }
-
     public void setActionCode(Integer actionCode) {
         this.action = ACTION.getACTION(actionCode);
     }
+
+    public BaseLog() {
+    }
+
 
     public Integer getActionCode() {
         return action.getIndex();
@@ -83,50 +100,14 @@ public class BaseLog {
     public String toString() {
         return "BaseLog{" +
                 "name:'" + name + '\'' +
-                ", action:" + action.index +
+                ", action:" + action.getIndex() +
                 '}';
     }
 
-    public enum ACTION {
 
-        LOGIN("登录", 1),
-        LOGOUT("登出", 2),
-        GET_DATA("获取数据", 3),
-        DELETE_DATA("删除数据", 4),
-        PUSH_DATA("更新数据", 5),
-        VIEW_PAGE("訪問頁面", 6);
-        private static final Map<Integer, ACTION> CODE_MAP = new HashMap<Integer, ACTION>();
-
-        static {
-            for (ACTION typeEnum : ACTION.values()) {
-                CODE_MAP.put(typeEnum.getIndex(), typeEnum);
-            }
-        }
-        // 成员变量
-        private String name;
-        private int index;
-
-        public int getIndex() {
-            return index;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public static ACTION getACTION(Integer code) {
-            return CODE_MAP.get(code);
-        }
-        // 构造方法
-        ACTION(String name, int index) {
-            this.name = name;
-            this.index = index;
-        }
-
-    }
 
     public String toDbString() {
-        return "{name:" + name + ",date:" + date + ",action:" + action.index + "}";
+        return "{name:" + name + ",date:" + date + ",action:" + action.getIndex() + "}";
     }
 
     public static void main(String[] args) {

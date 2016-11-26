@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import w.p.j.domain.ACTION;
 import w.p.j.domain.Apple;
 import w.p.j.domain.BaseLog;
-import w.p.j.log.impl.AbstractBaseLogger;
+import w.p.j.log.BaseLoggerDao;
 import w.p.j.util.FastJsonUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,9 @@ import java.util.*;
  **/
 @Controller
 @RequestMapping("/bttable")
-public class BootstrapTableController extends AbstractBaseLogger {
+public class BootstrapTableController {
+    @Autowired
+    BaseLoggerDao baseLoggerDao;
     @Autowired
     private HttpServletRequest httpServletRequest;
     @Autowired
@@ -31,14 +34,14 @@ public class BootstrapTableController extends AbstractBaseLogger {
 
     @RequestMapping("/table")
     public String table() {
-        addToDBLog(new BaseLog(BaseLog.ACTION.VIEW_PAGE, httpServletRequest.getRemoteUser()));
+        baseLoggerDao.addToDBLog(new BaseLog(ACTION.VIEW_PAGE, httpServletRequest.getRemoteUser()));
         return "table";
     }
 
     @RequestMapping("/data")
     @ResponseBody
     public Object data() {
-        addToDBLog(new BaseLog(BaseLog.ACTION.GET_DATA, httpServletRequest.getLocalAddr()));
+        baseLoggerDao.addToDBLog(new BaseLog(ACTION.GET_DATA, httpServletRequest.getLocalAddr()));
         List<Apple> appleList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             Random r = new Random();
@@ -82,7 +85,7 @@ public class BootstrapTableController extends AbstractBaseLogger {
             out = response.getWriter();
             out.append(jsonString);
             //  Thread.sleep(1000);
-            addToDBLog(new BaseLog(BaseLog.ACTION.GET_DATA, jsonString));
+            baseLoggerDao.addToDBLog(new BaseLog(ACTION.GET_DATA, jsonString));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {

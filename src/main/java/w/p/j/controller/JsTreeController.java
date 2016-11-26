@@ -1,9 +1,10 @@
 package w.p.j.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import w.p.j.domain.BaseLog;
-import w.p.j.log.impl.AbstractBaseLogger;
+import w.p.j.aop.Procedure;
+import w.p.j.log.BaseLoggerDao;
 
 /**
  * Name：JsTreeController
@@ -13,11 +14,12 @@ import w.p.j.log.impl.AbstractBaseLogger;
  **/
 @Controller
 @RequestMapping("/jstree")
-public class JsTreeController extends AbstractBaseLogger {
+public class JsTreeController {
+    @Autowired
+    BaseLoggerDao baseLoggerDao;
     @RequestMapping("/tojstree")
-
+    @Procedure(description = "加载树")
     public String tojstree() {
-        addToDBLog(new BaseLog(BaseLog.ACTION.GET_DATA, "pj"));
         return "jstree";
     }
 }

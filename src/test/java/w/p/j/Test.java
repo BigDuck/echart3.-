@@ -113,11 +113,11 @@ public class Test {
 //                }
 //            }
 //        }
-        for (String typeItem : type) {
-            System.out.println(getArr(showTypeList, list, typeItem).toString());
-        }
-
-
+//        for (String typeItem : type) {
+//            System.out.println(getArr(showTypeList, list, typeItem).toString());
+//        }
+//        Client client = new NodeClient();
+//        ElasticsearchTemplate elasticsearchTemplate=new ElasticsearchTemplate();
 
 //        for (int i=0;i<showTypeList.size();i++){ //2016
 //            for (Map<String,Object> item:list){
